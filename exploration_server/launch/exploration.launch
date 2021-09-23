@@ -7,11 +7,16 @@
     <!-- Set to your sensor's range -->
     <arg name="sensor_range" default="1.0"/>
 
-    <node pkg="exploration_server" type="plugin_client" name="plugin_client" output="screen">
+    <node pkg="exploration_server" type="plugin_client" name="plugin_client"
+launch-prefix="xterm -fa 'Monospace' -fs 12 -e"
+       output="screen">
 
     </node>
 
-    <node pkg="exploration_server" type="exploration_server_node" name="exploration_server_node" output="screen">
+    <node pkg="exploration_server" 
+         type="exploration_server_node" 
+         name="exploration_server_node" 
+       output="screen">
 
         <rosparam param="points" ns="explore_costmap" file="$(find exploration_server)/config/points.yaml" command="load"/>
         <param name="frequency" type="double" value="2.0"/>
